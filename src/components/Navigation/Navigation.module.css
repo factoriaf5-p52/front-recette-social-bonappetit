@@ -1,0 +1,56 @@
+.HeaderDesktop{
+    background-color: #ef3125;
+    display: flex;
+    justify-content: center;
+
+}
+.HeaderDesktop>nav{
+        color: #fbfbfb;
+        font-weight: bold;
+        font-size: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        width: 100%;
+        padding: 0 40px;
+        max-width: 1200px;
+}
+.HeaderDesktop>nav>ul{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .HeaderDesktop {
+            display: none;
+
+        }
+
+}
+@media (max-width: 768px) {
+    .HeaderMobile {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 100%;
+        padding: 0 40px;
+        max-width: 1200px;
+    }
+
+    .HeaderMobile>ul {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .HeaderMobile {
+        display: none;
+    }
+}
