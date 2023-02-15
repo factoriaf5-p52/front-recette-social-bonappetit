@@ -21,6 +21,12 @@
     gap: 2rem;
     justify-content: center;
 }
+.HeaderDesktop>nav>ul>li:hover{
+    color: #46cc8d;
+}
+.HeaderDesktop>nav>img{
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
     .HeaderDesktop {
