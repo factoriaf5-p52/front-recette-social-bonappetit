@@ -7,7 +7,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="hidden md:flex absolute bottom-0 w-full flex-col justify-center items-center h-32 bg-white">
+    <div className="hidden md:flex bottom-0 w-full flex-col justify-center items-center h-32 -mt-32 bg-white">
       <p>© Bon Appétit Social App</p>
       <ul className="flex flex-row my-2">
         <li>Contact Us </li>&nbsp;-&nbsp;<li>Privacy Policy </li>&nbsp;-&nbsp;
