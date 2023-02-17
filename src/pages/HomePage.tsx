@@ -1,4 +1,3 @@
-import Footer from "../components/Footer/Footer";
 import ReactPlayer from "react-player";
 import iconArrow from "../assets/iconback.svg";
 import { useEffect, useState } from "react";

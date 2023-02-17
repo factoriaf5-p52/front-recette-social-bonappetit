@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BackButton } from "../components/BackButton/BackButton";
 import Footer from "../components/Footer/Footer";
 import FormAlert from "../components/FormAlert/FormAlert";
 import validator from "validator";
+import axios from "axios";
 
 type Props = {};
 
@@ -22,6 +23,8 @@ const RegisterPage = (props: Props) => {
 
   const [alert, setAlert] = useState<any>({});
 
+  const navigate = useNavigate();
+
   const handleResize = () => {
     if (window.innerWidth < 720) {
       setIsMobile(true);
@@ -34,7 +37,7 @@ const RegisterPage = (props: Props) => {
     window.addEventListener("resize", handleResize);
   });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if ([username, email, password, repassword].includes("")) {
@@ -62,17 +65,23 @@ const RegisterPage = (props: Props) => {
     }
 
     if (validator.isEmail(email)) {
-      setAlert({
-        msg: "You have been correctly registered. Your going to be redirected...",
-        isError: false,
-      });
+      //Create user into Api
+      try {
+        const URL_BASE = "https://backendbonappetit.up.railway.app/api/v1/";
+        const urlUsers = "users";
+        const response = await axios.post(URL_BASE + urlUsers, {
+          username,
+          email,
+          password,
+        });
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
 
-      setTimeout(() => {
-        setAlert({});
-        //Creamos usuario en la Api
-      }, 2000);
-
-      console.log("Everything ok");
+      setAlert({});
+      navigate("/auth/profile/" + username);
+      console.log("New user registered");
     } else {
       setAlert({ msg: "Please, enter valid Email!", isError: true });
       return;
