@@ -96,7 +96,6 @@ const LoginPage = (props: Props) => {
             </Link>
           </h2>
         </div>
-        {/* <FormAlert alert={alert} /> */}
       </section>
       <Footer />
     </>

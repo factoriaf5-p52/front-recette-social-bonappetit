@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BackButton } from "../components/BackButton/BackButton";
 import Footer from "../components/Footer/Footer";
+import FormAlert from "../components/FormAlert/FormAlert";
+import validator from "validator";
 
 type Props = {};
+
+// type Alert = {
+//   msg: string;
+//   isError: boolean;
+// };
 
 const RegisterPage = (props: Props) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -13,7 +20,7 @@ const RegisterPage = (props: Props) => {
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
 
-  const [alert, setAlert] = useState({});
+  const [alert, setAlert] = useState<any>({});
 
   const handleResize = () => {
     if (window.innerWidth < 720) {
@@ -31,31 +38,52 @@ const RegisterPage = (props: Props) => {
     e.preventDefault();
 
     if ([username, email, password, repassword].includes("")) {
-      setAlert({ msg: "There is some empty input", error: true });
+      setAlert({ msg: "There is some empty input", isError: true });
+      console.log("Error 1");
       return;
     }
 
     if (password !== repassword) {
-      setAlert({ msg: "Password not coincident", error: true });
+      setAlert({ msg: "Password not coincident", isError: true });
+      console.log("Error 2");
       return;
     }
 
     if (password.length < 8) {
-      setAlert({ msg: "Password too short", error: true });
+      setAlert({ msg: "Password too short", isError: true });
+      console.log("Error 3");
       return;
     }
 
     if (username.length < 5) {
-      setAlert({ msg: "Username too short", error: true });
+      setAlert({ msg: "Username too short", isError: true });
+      console.log("Error 4");
       return;
     }
 
-    console.log("clickado");
+    if (validator.isEmail(email)) {
+      setAlert({
+        msg: "You have been correctly registered. Your going to be redirected...",
+        isError: false,
+      });
+
+      setTimeout(() => {
+        setAlert({});
+        //Creamos usuario en la Api
+      }, 2000);
+
+      console.log("Everything ok");
+    } else {
+      setAlert({ msg: "Please, enter valid Email!", isError: true });
+      return;
+    }
   };
+
+  const { msg } = alert;
 
   return (
     <>
-      <section className="flex flex-col justify-center items-center">
+      <section className="flex flex-col justify-center items-center ">
         <div className="bg-red md:bg-white px-10 py-8 flex  w-full">
           {isMobile ? <BackButton /> : ""}
           <h1 className="flex-1 w-64 text-white md:text-gray-dark font-bold text-2xl md:text-3xl text-center mb-4">
@@ -91,7 +119,7 @@ const RegisterPage = (props: Props) => {
                 className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-gray-light"
                 id="email"
                 type="email"
-                placeholder="email@email.com"
+                placeholder="your@email.com"
               />
             </div>
             <div>
@@ -145,6 +173,7 @@ const RegisterPage = (props: Props) => {
                 Sign up
               </button>
             </div>
+            {msg && <FormAlert alert={alert} />}
           </form>
         </div>
       </section>
