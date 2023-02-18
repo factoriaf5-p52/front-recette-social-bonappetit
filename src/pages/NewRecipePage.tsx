@@ -9,11 +9,4 @@ const NewRecipePage = (props: Props) => {
 
 
 
-
-
-
-
-
-
-
 export default NewRecipePage;

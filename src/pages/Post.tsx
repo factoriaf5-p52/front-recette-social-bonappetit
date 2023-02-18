@@ -2,6 +2,20 @@ import React, { useState } from 'react'
 
 type Props = {}
 
+type Option = {
+    value: string;
+    label: string;
+};
+const options: Option[] = [
+    { value: "egg", label: "Egg" },
+    { value: "meat", label: "Meat" },
+    { value: "chicken", label: "Chicken" },
+    { value: "oil", label: "Oil" },
+    { value: "flour", label: "Flour" },
+    { value: "sugar", label: "Sugar" },
+    { value: "milk", label: "Milk" },
+];
+
 const Post = (props: Props) => {
 
     const [name, setName] = useState('');
@@ -11,38 +25,32 @@ const Post = (props: Props) => {
     const [country, setCountry] = useState('');
     const [cookTime, setCookTime] = useState('');
     const [difficulty, setDifficulty] = useState('');
-    const [ingredients, setIngredients] = useState('');
-    const [isChecked1, setIsChecked1] = useState(false);
-    const [isChecked2, setIsChecked2] = useState(false);
-    const [isChecked3, setIsChecked3] = useState(false);
-    const [isChecked4, setIsChecked4] = useState(false);
+    const [image, setImage] = useState('');
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         console.log('Formulario enviado');
         // Aquí podrías enviar los datos del formulario a un servidor
     };
-    const handleCheckBox1Change = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
-        setIsChecked1(event.target.checked);
+    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+
+    const handleAddOption = () => {
+        if (selectedOption && !selectedOptions.includes(selectedOption.value)) {
+            setSelectedOptions([...selectedOptions, selectedOption.value]);
+            setSelectedOption(null);
+        }
     };
 
-    const handleCheckBox2Change = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
-        setIsChecked2(event.target.checked);
-    };
-
-    const handleCheckBox3Change = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
-        setIsChecked3(event.target.checked);
-    };
-
-    const handleCheckBox4Change = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
-        setIsChecked4(event.target.checked);
+    const handleRemoveOption = (value: string) => {
+        setSelectedOptions(selectedOptions.filter((option) => option !== value));
     };
 
     return (
         <form onSubmit={handleSubmit} className="px-8 pt-6 pb-8 mb-4 w-full lg:w-1/2 mx-auto">
             <div className="mb-4 ">
                 <label htmlFor="name" className="block mb-2 font-bold text-gray-700 ">Name</label>
-                <input type="text" id="nombre" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]" />
+                <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]" />
             </div>
 
             <div className="mb-4">
@@ -95,54 +103,59 @@ const Post = (props: Props) => {
                 </select>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-4 ">
+
                 <label htmlFor="typeingredients" className="block mb-2 font-bold text-gray-700">Ingredients</label>
-                <select id="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
-                    <option value="">Option Select</option>
-                    <option value="egg">Egg</option>
-                    <option value="flour">Flour</option>
-                    <option value="rice">rice</option>
-                    <option value="legumes">Legumes</option>
-                    <option value="sugar">Sugar</option>
-                    <option value="milk">Milk</option>
-                    <option value="olive oil">Olive oil</option>
-                    <option value="butter">Butter</option>
-                </select>
+                <div className="relative">
+                    <select id="select" name="select" value={selectedOption?.value || ""} onChange={(e) =>
+                        setSelectedOption(options.find((option) => option.value === e.target.value) || null
+                        )
+                    }
+                        className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
+
+                        <option value="">Selecciona una opción</option>
+                        {options.map((option) => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </select>
+                    {selectedOption && (
+                        <button type="button" onClick={handleAddOption} className="absolute inset-y-0 right-10 flex items-center px-2 text-gray-700"> Add </button>
+                    )}
+
+                </div>
+                {selectedOptions.length > 0 && (
+                    <div className="px-8 pt-6 pb-8 mb-4 w-full lg:w-1/2 mx-auto">
+                        <label className="font-medium">Opciones seleccionadas:</label>
+                        {selectedOptions.map((value) => (
+                            <div key={value} className="flex items-center gap-2 p-2 bg-gray-100 rounded-md">
+                                <span>{options.find((option) => option.value === value)?.label}</span>
+                                <button
+                                    type="button"
+                                    onClick={() => handleRemoveOption(value)}
+                                    className="flex items-center justify-center w-6 h-6 text-gray-700 rounded-full hover:bg-gray-200"
+                                >
+                                    X
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
-
-            <label htmlFor="quantity" className="block mb-2 font-bold text-gray-700">Select quantity</label>
-            <form className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]" onSubmit={handleSubmit}>
-
-                <div className="mb-4">
-                    <label className="inline-flex items-center">
-                        <input type="checkbox" className="form-checkbox" checked={isChecked1} onChange={handleCheckBox1Change} />
-                        <span className="ml-2 text-sm font-medium">Fish</span>
-                    </label>
-                </div>
-                <div className="mb-4">
-                    <label className="inline-flex items-center">
-                        <input type="checkbox" className="form-checkbox" checked={isChecked2} onChange={handleCheckBox2Change} />
-                        <span className="ml-2 text-sm font-medium">Onion</span>
-                    </label>
-                </div>
-                <div className="mb-4">
-                    <label className="inline-flex items-center">
-                        <input type="checkbox" className="form-checkbox" checked={isChecked3} onChange={handleCheckBox3Change} />
-                        <span className="ml-2 text-sm font-medium">Lime</span>
-                    </label>
-                </div>
-                <div className="mb-4">
-                    <label className="inline-flex items-center">
-                        <input type="checkbox" className="form-checkbox" checked={isChecked4} onChange={handleCheckBox4Change} />
-                        <span className="ml-2 text-sm font-medium">Salt</span>
-                    </label>
-                </div>
-            </form>
 
             <div className="mb-4">
                 <label htmlFor="description" className="block mb-2 font-bold text-gray-700">Description</label>
                 <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg bg-[#f1f1f1]"></textarea>
             </div>
+
+
+            <div className="mb-4">
+                <label htmlFor="image" className="block mb-2 font-bold text-gray-700">Image</label>
+                <textarea id="image" value={image} onChange={(e) => setImage(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg bg-[#f1f1f1]"></textarea>
+            </div>
+
+
             <div className='flex justify-center' >
                 <button type="submit" className="px-12 py-4 bg-[#EF3125] text-white">Send</button>
             </div>
