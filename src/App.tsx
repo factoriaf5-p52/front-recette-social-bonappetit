@@ -4,6 +4,7 @@ import "./App.css";
 import { Layout } from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import Post from "./pages/Post";
 import ProfilePage from "./pages/ProfilePage";
 import RecipeListPage from "./pages/RecipeListPage";
 import SocialPage from "./pages/SocialPage";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/statistics" element={<StatisticsPage />} />
             <Route path="/social" element={<SocialPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/post" element={<Post />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
