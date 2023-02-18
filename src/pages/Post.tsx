@@ -95,39 +95,6 @@ const Post = (props: Props) => {
                 </select>
             </div>
 
-
-
-            <label htmlFor="quantity" className="block mb-2 font-bold text-gray-700">Select quantity</label>
-            <form className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]" onSubmit={handleSubmit}>
-               
-               <div className="mb-4">
-                    <label className="inline-flex items-center">
-                        <input type="checkbox" className="form-checkbox" checked={isChecked1} onChange={handleCheckBox1Change}/>
-                        <span className="ml-2 text-sm font-medium">Fish</span>
-                    </label>
-                </div>
-                <div className="mb-4">
-                    <label className="inline-flex items-center">
-                        <input type="checkbox" className="form-checkbox" checked={isChecked2} onChange={handleCheckBox2Change}/>
-                        <span className="ml-2 text-sm font-medium">Onion</span>
-                    </label>
-                </div>
-                <div className="mb-4">
-                    <label className="inline-flex items-center">
-                        <input type="checkbox" className="form-checkbox" checked={isChecked3} onChange={handleCheckBox3Change}/>
-                        <span className="ml-2 text-sm font-medium">Lime</span>
-                    </label>
-                </div>
-                <div className="mb-4">
-                    <label className="inline-flex items-center">
-                        <input type="checkbox" className="form-checkbox" checked={isChecked4} onChange={handleCheckBox4Change}/>
-                        <span className="ml-2 text-sm font-medium">Salt</span>
-                    </label>
-                </div>
-            </form>
-
-
-
             <div className="mb-4">
                 <label htmlFor="typeingredients" className="block mb-2 font-bold text-gray-700">Ingredients</label>
                 <select id="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
@@ -143,6 +110,35 @@ const Post = (props: Props) => {
                 </select>
             </div>
 
+            <label htmlFor="quantity" className="block mb-2 font-bold text-gray-700">Select quantity</label>
+            <form className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]" onSubmit={handleSubmit}>
+
+                <div className="mb-4">
+                    <label className="inline-flex items-center">
+                        <input type="checkbox" className="form-checkbox" checked={isChecked1} onChange={handleCheckBox1Change} />
+                        <span className="ml-2 text-sm font-medium">Fish</span>
+                    </label>
+                </div>
+                <div className="mb-4">
+                    <label className="inline-flex items-center">
+                        <input type="checkbox" className="form-checkbox" checked={isChecked2} onChange={handleCheckBox2Change} />
+                        <span className="ml-2 text-sm font-medium">Onion</span>
+                    </label>
+                </div>
+                <div className="mb-4">
+                    <label className="inline-flex items-center">
+                        <input type="checkbox" className="form-checkbox" checked={isChecked3} onChange={handleCheckBox3Change} />
+                        <span className="ml-2 text-sm font-medium">Lime</span>
+                    </label>
+                </div>
+                <div className="mb-4">
+                    <label className="inline-flex items-center">
+                        <input type="checkbox" className="form-checkbox" checked={isChecked4} onChange={handleCheckBox4Change} />
+                        <span className="ml-2 text-sm font-medium">Salt</span>
+                    </label>
+                </div>
+            </form>
+
             <div className="mb-4">
                 <label htmlFor="description" className="block mb-2 font-bold text-gray-700">Description</label>
                 <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg bg-[#f1f1f1]"></textarea>
@@ -151,7 +147,6 @@ const Post = (props: Props) => {
                 <button type="submit" className="px-12 py-4 bg-[#EF3125] text-white">Send</button>
             </div>
         </form>
-
 
     );
 }
