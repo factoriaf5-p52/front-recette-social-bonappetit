@@ -47,7 +47,7 @@ const Post = (props: Props) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="px-8 pt-6 pb-8 mb-4 w-full lg:w-1/2 mx-auto">
+        <form onSubmit={handleSubmit} className="container mx-auto px-4 py-6 md:py-12 md:grid md:grid-cols-3 md:gap-4">
             <div className="mb-4 ">
                 <label htmlFor="name" className="block mb-2 font-bold text-gray-700 ">Name</label>
                 <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]" />
