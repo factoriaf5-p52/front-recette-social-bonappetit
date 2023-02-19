@@ -5,6 +5,8 @@ import Footer from "../components/Footer/Footer";
 import FormAlert from "../components/FormAlert/FormAlert";
 import validator from "validator";
 import axios from "axios";
+import userServices from "../services/userServices";
+import { type } from "os";
 
 type Props = {};
 
@@ -40,6 +42,8 @@ const RegisterPage = (props: Props) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    //Form Validation
+
     if ([username, email, password, repassword].includes("")) {
       setAlert({ msg: "There is some empty input", isError: true });
       console.log("Error 1");
@@ -64,28 +68,39 @@ const RegisterPage = (props: Props) => {
       return;
     }
 
-    if (validator.isEmail(email)) {
-      //Create user into Api
-      try {
-        const URL_BASE = "https://backendbonappetit.up.railway.app/api/v1/";
-        const urlUsers = "users";
-        const response = await axios.post(URL_BASE + urlUsers, {
-          username,
-          email,
-          password,
-        });
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-
-      setAlert({});
-      navigate("/auth/profile/" + username);
-      console.log("New user registered");
-    } else {
-      setAlert({ msg: "Please, enter valid Email!", isError: true });
+    if (!validator.isEmail(email)) {
+      setAlert({ msg: "Email is not in a correct format", isError: true });
+      console.log("Error 5");
       return;
     }
+
+    //Create user with Api
+
+    const newUser = { username, password, email };
+    await userServices
+      .newUser(newUser)
+      .then(async (response) => {
+        console.log("New user registered succesfully: ", response);
+      })
+      .catch((error) => {
+        console.log("Error when trying to create a new user: ", error);
+      });
+
+    await userServices
+      .loginUser({
+        password,
+        email,
+      })
+      .then(async (response) => {
+        const { token } = response;
+        console.log("token is: " + token);
+      })
+      .catch((error) => {
+        console.log("Error when trying to login: ", error);
+      });
+
+    setAlert({});
+    navigate("/auth/profile/" + username);
   };
 
   const { msg } = alert;

@@ -9,17 +9,17 @@ const AuthProfilePage = (props: Props) => {
   const { id } = params;
 
   useEffect(() => {
-    const confirmAccount = async () => {
-      try {
-        const response = await axios.get(
-          `https://backendbonappetit.up.railway.app/users/${id}`
-        );
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    confirmAccount();
+    // const confirmAccount = async () => {
+    //   try {
+    //     const response = await axios.get(
+    //       `https://backendbonappetit.up.railway.app/users/${id}`
+    //     );
+    //     console.log(response);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // confirmAccount();
   }, []);
 
   return <div>AuthProfilePage</div>;
