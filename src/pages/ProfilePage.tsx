@@ -1,5 +1,5 @@
 import React from "react";
-import User from "../assets/img-profile.svg"
+import Sherezada from "../assets/sherezada.svg"
 import BoxProfile from "../components/BoxProfile/BoxProfile"
 import Footer from "../components/Footer/Footer";
 
@@ -9,24 +9,24 @@ type Props = {};
 const ProfilePage = (props: Props) => {
   return (
 <>
-  <h1 className="flex justify-center justify-items-center mt-6 mb-3 font-bold text-2xl">Profile</h1>
+  <h1 className="flex justify-center mt-6 mb-3 font-bold text-2xl max-width:1280px sm:flex-wrap">Profile</h1>
 
-    <div className="flex flex-col justify-center justify-items-center">
-       <img className="h-32 mb-3"src={User} alt="user"/>
+    <div className="flex flex-col justify-center">
+       <img className="h-32 mb-3"src={Sherezada} alt="user"/>
        <p className=" flex justify-center mb-1 font-bold text-lg">Sherezada</p>
-       <p className="flex justify-center justify-items-center font-bold mb-10">Log out</p>
+       <p className="flex justify-center font-bold mb-8">Log out</p>
     </div>
     
-  <div className="grid grid-cols-2 gap-14 justify-items-center"> 
+  <div className="grid sm:grid-cols-1 md:grid-cols-2 place-items-center gap-20  max-width:1280px "> 
 
-      <div className="w-80 h-48 rounded">
+      <div className="w-80 h-48 rounded ">
           <div>
               <h2 className="font-bold mb-3">My recipes</h2>
           </div>  
      
           <div className="bg-gray-light w-80 h-48 rounded text-center pt-5">
               <ul>
-                  <li>Ceviche (lunch, Perú)</li>
+                  <li>Ceviche (lunch, Peru)</li>
                   <br></br>
                   <li>Alfajores (dessert, Argentina)</li>
                   <br></br>
@@ -44,6 +44,7 @@ const ProfilePage = (props: Props) => {
             </div>
 
             <div className="bg-gray-light w-80 h-48 rounded text-center pt-4"> 
+
                  <ol>
                     <li>1. A healthy breakfast</li>
                      <p>Oatmeal pancakes</p>
@@ -82,7 +83,7 @@ const ProfilePage = (props: Props) => {
              </div>
 
 
-    </div>
+      </div>
     <Footer/>
     </div>
   </>
