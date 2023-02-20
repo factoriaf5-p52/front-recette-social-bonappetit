@@ -7,8 +7,11 @@ import iconSocial from "../../assets/iconnotice.svg";
 import iconProfile from "../../assets/iconprofile.svg";
 import iconLogo from "../../assets/logo.svg";
 import iconUserNav from "../../assets/usernav.svg";
+import useAuth from "../../hooks/useAuth";
 
 const Navigation = () => {
+  const { auth } = useAuth();
+
   const navigate = useNavigate();
 
   const handleClickLogo = () => {
@@ -23,7 +26,6 @@ const Navigation = () => {
       <header className={styles.HeaderDesktop}>
         <nav>
           <img onClick={handleClickLogo} src={iconLogo} alt="Logo" />
-
           <ul>
             <li>
               <NavLink to="/">Home</NavLink>
@@ -41,7 +43,17 @@ const Navigation = () => {
               <NavLink to="/profile">Profile</NavLink>
             </li>
           </ul>
-          <img onClick={handleClickUser} src={iconUserNav} alt="User" />
+          <div className="flex flex-col">
+            <img
+              className="h-6"
+              onClick={handleClickUser}
+              src={iconUserNav}
+              alt="User"
+            />
+            <p onClick={handleClickUser} className="text-sm">
+              {auth?.username ? auth.username : "login"}
+            </p>
+          </div>
         </nav>
       </header>
 

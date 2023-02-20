@@ -12,8 +12,12 @@ import RegisterPage from "./pages/RegisterPage";
 import SocialPage from "./pages/SocialPage";
 import StatisticsPage from "./pages/StatisticsPage";
 import { AuthProvider } from "./context/AuthProvider";
+import useAuth from "./hooks/useAuth";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
+  const { auth } = useAuth();
+  console.log("from APP, auth: " + auth);
   return (
     <div>
       <BrowserRouter>
@@ -29,9 +33,9 @@ function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Route>
 
-            <Route path="/auth" element={<Layout />}>
-              <Route path="profile" element={<ProfilePage />} />
-              <Route path="profile/:id" element={<AuthProfilePage />} />
+            <Route element={<ProtectedRoute isAllowed={!!auth?.username} />}>
+              <Route path="/auth/profile" element={<ProfilePage />} />
+              <Route path="/auth/profile/:id" element={<AuthProfilePage />} />
             </Route>
           </Routes>
         </AuthProvider>

@@ -24,7 +24,7 @@
 .HeaderDesktop>nav>ul>li:hover{
     color: #46cc8d;
 }
-.HeaderDesktop>nav>img{
+.HeaderDesktop>nav>div>img,.HeaderDesktop>nav>div>p {
     cursor: pointer;
 }
 

@@ -1,71 +1,58 @@
-import axios from "axios";
 import { useState, useEffect, createContext } from "react";
-import userServices from "../services/userServices";
+import { findUserById } from "../services/userServices";
 import jwt_decode from "jwt-decode";
 
 interface AuthContextType {
   auth: User | null;
-  login: (email: string, password: string) => void;
-  logout: () => void;
+  setAuth: (auth: User | null) => void;
 }
 
 interface User {
   username: string;
   email: string;
+  id: string;
 }
 
 export const AuthContext = createContext<AuthContextType>({
   auth: null,
-  login: () => {},
-  logout: () => {},
+  setAuth: () => {},
 });
 
-const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+const AuthProvider: any = ({ children }: any): any => {
   const [auth, setAuth] = useState<User | null>(null);
 
   useEffect(() => {
     const authenticateUser = async () => {
       const token = localStorage.getItem("token");
       if (!token) {
+        console.log("token lost");
         return;
       }
 
-      //   const config = {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Authorization: `Bearer ${token}`,
-      //     }
-      //   };
-
-      const decodedToken: { username: string; email: string } =
+      const decodedToken: { username: string; email: string; id: string } =
         jwt_decode(token);
+      console.log("AuthProvider, from token: " + decodedToken.username);
+      console.log("AuthProvider, from auth: " + auth?.username);
 
       const authData = {
         username: decodedToken.username,
         email: decodedToken.email,
+        id: decodedToken.id,
       };
 
       try {
-        setAuth(authData);
+        const userData = await findUserById(authData.id);
+        setAuth(userData);
       } catch (error) {
         console.log(error);
         setAuth(null);
       }
     };
     authenticateUser();
-  }, []);
+  }, [auth?.username]);
 
-  const login = (email: string, password: string) => {
-    // Lógica para iniciar sesión y obtener el usuario
-    const user: User = { username: "John Doe", email };
-    setAuth(user);
-  };
-
-  const logout = () => {
-    setAuth(null);
-  };
   return (
-    <AuthContext.Provider value={{ auth, login, logout }}>
+    <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
     </AuthContext.Provider>
   );

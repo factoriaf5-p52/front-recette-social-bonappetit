@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BackButton } from "../components/BackButton/BackButton";
 import Footer from "../components/Footer/Footer";
-import FormAlert from "../components/FormAlert/FormAlert";
 
 type Props = {};
 

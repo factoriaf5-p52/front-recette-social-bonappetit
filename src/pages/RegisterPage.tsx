@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BackButton } from "../components/BackButton/BackButton";
 import Footer from "../components/Footer/Footer";
 import FormAlert from "../components/FormAlert/FormAlert";
 import validator from "validator";
-import axios from "axios";
-import userServices from "../services/userServices";
-import { type } from "os";
+import { registerUser, loginUser } from "../services/userServices";
+import AuthContext from "../context/AuthProvider";
+import useAuth from "../hooks/useAuth";
 
 type Props = {};
 
@@ -22,8 +22,11 @@ const RegisterPage = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
+  const [userId, setUserId] = useState("");
 
   const [alert, setAlert] = useState<any>({});
+
+  const { auth, setAuth } = useAuth();
 
   const navigate = useNavigate();
 
@@ -76,24 +79,29 @@ const RegisterPage = (props: Props) => {
 
     //Create user with Api
 
-    const newUser = { username, password, email };
-    await userServices
-      .newUser(newUser)
+    const newUser = { username, password, email, userId };
+    await registerUser(newUser)
       .then(async (response) => {
-        console.log("New user registered succesfully: ", response);
+        if (typeof response !== "undefined" && response.data._id) {
+          console.log(
+            "New user registered succesfully: ",
+            response,
+            `561dda8b_5`
+          );
+          setUserId(response.data._id);
+        }
       })
       .catch((error) => {
         console.log("Error when trying to create a new user: ", error);
       });
 
-    await userServices
-      .loginUser({
-        password,
-        email,
-      })
+    await loginUser({
+      password,
+      email,
+    })
       .then(async (response) => {
-        const { token } = response;
-        console.log("token is: " + token);
+        const { token, user } = response;
+        setAuth(user);
       })
       .catch((error) => {
         console.log("Error when trying to login: ", error);

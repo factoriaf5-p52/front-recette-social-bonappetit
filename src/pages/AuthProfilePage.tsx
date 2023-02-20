@@ -22,7 +22,7 @@ const AuthProfilePage = (props: Props) => {
     // confirmAccount();
   }, []);
 
-  return <div>AuthProfilePage</div>;
+  return <div>AuthProfilePage with ID: {id}</div>;
 };
 
 export default AuthProfilePage;
