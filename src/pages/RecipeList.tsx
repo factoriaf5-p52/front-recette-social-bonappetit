@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import pasta from "../assets/pasta.svg";
-import dessert from "../assets/dessert.svg";
-import meatballs from "../assets/meatballs.svg";
-import burguer from "../assets/burguer.svg";
-import salad from "../assets/salad.svg";
-import salmon from "../assets/salmon.svg";
+import salmon from "../assets/salmon.png";
 import { findAllRecipes } from "../services/recipeServices";
 
 type Props = {};
@@ -61,42 +56,42 @@ const RecipeListPage = (props: Props) => {
 
       <div className="flex flex-wrap justify-center items-center px-20 py-5">
         <div className="flex flex-col text-center mt-4">
-          <img src={pasta} alt="pasta" className="scale-150 p-6" />
+          <img src={salmon} alt="pasta" className="scale-150 p-6" />
           <h3 className="font-medium">Pasta</h3>
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={dessert} alt="dessert" className="scale-150 p-6" />
+          <img src={salmon} alt="dessert" className="scale-150 p-6" />
           <h3 className="font-medium">Dessert</h3>
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={meatballs} alt="meatballs" className="scale-150 p-6" />
+          <img src={salmon} alt="meatballs" className="scale-150 p-6" />
           <h3 className="font-medium">Meatballs</h3>
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={pasta} alt="pasta" className="scale-150 p-6" />
+          <img src={salmon} alt="pasta" className="scale-150 p-6" />
           <h3 className="font-medium">Pasta</h3>
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={dessert} alt="dessert" className="scale-150 p-6" />
+          <img src={salmon} alt="dessert" className="scale-150 p-6" />
           <h3 className="font-medium">Dessert</h3>
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={meatballs} alt="meatballs" className="scale-150 p-6" />
+          <img src={salmon} alt="meatballs" className="scale-150 p-6" />
           <h3 className="font-medium">Meatballs</h3>
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={burguer} alt="burguer" className="scale-150 p-6" />
+          <img src={salmon} alt="burguer" className="scale-150 p-6" />
           <h3 className="font-medium">Burguer</h3>
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={salad} alt="salad" className="scale-150 p-6" />
+          <img src={salmon} alt="salad" className="scale-150 p-6" />
           <h3 className="font-medium">Salad</h3>
         </div>
 
@@ -106,12 +101,12 @@ const RecipeListPage = (props: Props) => {
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={burguer} alt="burguer" className="scale-150 p-6" />
+          <img src={salmon} alt="burguer" className="scale-150 p-6" />
           <h3 className="font-medium">Burguer</h3>
         </div>
 
         <div className="flex flex-col text-center mt-4">
-          <img src={salad} alt="salad" className="scale-150 p-6" />
+          <img src={salmon} alt="salad" className="scale-150 p-6" />
           <h3 className="font-medium">Salad</h3>
         </div>
 
