@@ -6,6 +6,7 @@ import AuthProfilePage from "./pages/AuthProfilePage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import Post from "./pages/Post";
 import ProfilePage from "./pages/ProfilePage";
 import RecipeListPage from "./pages/RecipeListPage";
 import RegisterPage from "./pages/RegisterPage";
