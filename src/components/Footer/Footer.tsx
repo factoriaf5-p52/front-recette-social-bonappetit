@@ -7,7 +7,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="hidden md:flex fixed bottom-0 w-full flex-col justify-center items-center h-32">
+    <footer className="hidden md:flex flex-col justify-center items-center h-32 bg-white w-full box-border">
       <p>© Bon Appétit Social App</p>
       <ul className="flex flex-row my-2">
         <li>Contact Us </li>&nbsp;-&nbsp;<li>Privacy Policy </li>&nbsp;-&nbsp;
@@ -19,7 +19,7 @@ const Footer = (props: Props) => {
         <img className="cursor-pointer" src={iconInstagram} alt="Instagram" />
         <img className="cursor-pointer" src={iconTwitter} alt="Twitter" />
       </div>
-    </div>
+    </footer>
   );
 };
 
