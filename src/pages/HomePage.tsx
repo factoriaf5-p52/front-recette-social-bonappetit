@@ -51,7 +51,7 @@ const HomePage = (props: Props) => {
         <button
           onClick={handleClick}
           type="button"
-          className="bg-red cursor-pointer px-24 py-3 flex gap-8 rounded-sm text-white absolute bottom-20"
+          className="bg-red hover:bg-green cursor-pointer px-24 py-3 flex gap-8 rounded-sm text-white absolute bottom-20"
         >
           Bon Appétit <img className="" src={iconArrow} alt="arrow" />
         </button>

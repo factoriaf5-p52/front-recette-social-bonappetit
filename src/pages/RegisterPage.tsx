@@ -4,16 +4,10 @@ import { BackButton } from "../components/BackButton/BackButton";
 import Footer from "../components/Footer/Footer";
 import FormAlert from "../components/FormAlert/FormAlert";
 import validator from "validator";
-import { registerUser, loginUser } from "../services/userServices";
-import AuthContext from "../context/AuthProvider";
+import { registerUser } from "../services/userServices";
 import useAuth from "../hooks/useAuth";
 
 type Props = {};
-
-// type Alert = {
-//   msg: string;
-//   isError: boolean;
-// };
 
 const RegisterPage = (props: Props) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -72,7 +66,7 @@ const RegisterPage = (props: Props) => {
     }
 
     if (!validator.isEmail(email)) {
-      setAlert({ msg: "Email is not in a correct format", isError: true });
+      setAlert({ msg: "Invalid Email format", isError: true });
       console.log("Error 5");
       return;
     }
@@ -95,20 +89,8 @@ const RegisterPage = (props: Props) => {
         console.log("Error when trying to create a new user: ", error);
       });
 
-    await loginUser({
-      password,
-      email,
-    })
-      .then(async (response) => {
-        const { token, user } = response;
-        setAuth(user);
-      })
-      .catch((error) => {
-        console.log("Error when trying to login: ", error);
-      });
-
     setAlert({});
-    navigate("/auth/profile/" + username);
+    navigate("/login");
   };
 
   const { msg } = alert;

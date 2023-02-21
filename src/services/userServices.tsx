@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API_URL = "https://backendbonappetit.up.railway.app/api/v1/users";
+const API_URL = "https://backend-bonappetit.up.railway.app/api/v1/users";
 const API_URL_LOGIN =
-  "https://backendbonappetit.up.railway.app/api/v1/auth/login";
+  "https://backend-bonappetit.up.railway.app/api/v1/auth/login";
 
 export const registerUser = async (data: any): Promise<any> => {
   try {

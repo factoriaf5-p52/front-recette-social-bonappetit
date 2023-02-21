@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BackButton } from "../components/BackButton/BackButton";
 import Footer from "../components/Footer/Footer";
+import { loginUser } from "../services/userServices";
+import useAuth from "../hooks/useAuth";
+import FormAlert from "../components/FormAlert/FormAlert";
 
 type Props = {};
 
@@ -10,7 +13,11 @@ const LoginPage = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [alert, setAlert] = useState({});
+  const [alert, setAlert] = useState<any>({});
+
+  const { auth, setAuth } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleResize = () => {
     if (window.innerWidth < 720) {
@@ -24,16 +31,41 @@ const LoginPage = (props: Props) => {
     window.addEventListener("resize", handleResize);
   });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    //Form validation
 
     if ([email, password].includes("")) {
       console.log("there is some empty input");
       return;
     }
 
+    //Validate with API
+    await loginUser({
+      password,
+      email,
+    })
+      .then(async (response) => {
+        const { user } = response;
+        setAuth(user);
+        setAlert({
+          msg: "Login succesfully! You are going to be redirected to homepage",
+          isError: false,
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      })
+      .catch((error) => {
+        console.log("Error when trying to login: ", error);
+        setAlert({ msg: "Login wrong", isError: true });
+      });
+
     console.log("clickado");
   };
+
+  const { msg } = alert;
 
   return (
     <>
@@ -85,6 +117,7 @@ const LoginPage = (props: Props) => {
                 Log in
               </button>
             </div>
+            {msg && <FormAlert alert={alert} />}
           </form>
         </div>
         <div className="max-w-7xl mx-14 my-16 flex justify-center">

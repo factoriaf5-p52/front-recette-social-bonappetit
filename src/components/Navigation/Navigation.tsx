@@ -18,7 +18,7 @@ const Navigation = () => {
     navigate("/");
   };
   const handleClickUser = () => {
-    navigate("/profile");
+    navigate("/login");
   };
 
   return (
@@ -42,6 +42,11 @@ const Navigation = () => {
             <li>
               <NavLink to="/profile">Profile</NavLink>
             </li>
+            {auth?.username && (
+              <li>
+                <NavLink to="/post">New Recipe</NavLink>
+              </li>
+            )}
           </ul>
           <div className="flex flex-col">
             <img

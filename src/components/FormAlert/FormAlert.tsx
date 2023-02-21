@@ -3,7 +3,7 @@ const FormAlert = ({ alert }: any) => {
     <div
       className={`${
         alert.isError ? "bg-red" : "bg-green"
-      } bg-red px-4 py-3 rounded relative mt-3`}
+      } px-4 py-3 rounded relative mt-3`}
       role="alert"
     >
       {alert.msg}

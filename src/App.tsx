@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Layout } from "./components/Layout";
@@ -17,7 +17,9 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
   const { auth } = useAuth();
-  console.log("from APP, auth: " + auth);
+
+  console.log("from APP, auth: " + auth?.username);
+
   return (
     <div>
       <BrowserRouter>
@@ -30,12 +32,9 @@ function App() {
               <Route path="/social" element={<SocialPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/profile/:id" element={<AuthProfilePage />} />
               <Route path="*" element={<NotFoundPage />} />
-            </Route>
-
-            <Route element={<ProtectedRoute isAllowed={!!auth?.username} />}>
-              <Route path="/auth/profile" element={<ProfilePage />} />
-              <Route path="/auth/profile/:id" element={<AuthProfilePage />} />
             </Route>
           </Routes>
         </AuthProvider>
