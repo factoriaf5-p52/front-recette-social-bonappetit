@@ -1,167 +1,264 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from "react";
+import newRecipeService from "../services/newRecipeService";
+import fileService from "../services/fileService";
+import ingredientService from "../services/ingredientsService";
+import { IIngredient } from "../Interfaces/ingredient.interface";
+import { IRecipe } from "../Interfaces/recipe.interface";
 
-type Props = {}
-
-type Option = {
-    value: string;
-    label: string;
-};
-const options: Option[] = [
-    { value: "egg", label: "Egg" },
-    { value: "meat", label: "Meat" },
-    { value: "chicken", label: "Chicken" },
-    { value: "oil", label: "Oil" },
-    { value: "flour", label: "Flour" },
-    { value: "sugar", label: "Sugar" },
-    { value: "milk", label: "Milk" },
-];
+type Props = {};
 
 const Post = (props: Props) => {
+  const [name, setName] = useState<any>("");
+  const [description, setDescription] = useState<any>("");
+  const [mealType, setMealType] = useState<any>("");
+  const [cookTime, setCookTime] = useState<any>("");
+  const [difficulty, setDifficulty] = useState<any>("");
+  const [image, setImage] = useState<any>("");
+  const [imageUrl, setImageUrl] = useState<any>("");
+  const [ingredients, setIngredients] = useState<IIngredient[]>([]);
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [mealType, setMealType] = useState('');
-    const [foodType, setFoodType] = useState('');
-    const [country, setCountry] = useState('');
-    const [cookTime, setCookTime] = useState('');
-    const [difficulty, setDifficulty] = useState('');
-    const [image, setImage] = useState('');
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    // const formData = new FormData();
+    // formData.append("image", image);
 
-    const handleSubmit = (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
-        console.log('Formulario enviado');
-        // Aquí podrías enviar los datos del formulario a un servidor
+    // //Send image and get url
+
+    // try {
+    //   const imageUpUrl = await fileService.getData(formData);
+    //   console.log("image url: " + imageUpUrl.secureUrl);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    //Send form to create new recipe
+
+    const recipeDto: IRecipe = {
+      title: name,
+      description: description,
+      author: "63f1daa9ca0c1ab2f85fbe06",
+      ingredients: [{ ingredient: "63f3307ee699fdd3da1083b8", qty: 100 }],
+      time: Number(cookTime),
+      is_private: false,
+      tags: ["easy"],
+      mealType: mealType,
+      image: "",
     };
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-    const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
-    const handleAddOption = () => {
-        if (selectedOption && !selectedOptions.includes(selectedOption.value)) {
-            setSelectedOptions([...selectedOptions, selectedOption.value]);
-            setSelectedOption(null);
-        }
-    };
+    try {
+      const recipeEntered = await newRecipeService.postRecipe(recipeDto);
+      console.log(recipeEntered);
+    } catch (error) {}
 
-    const handleRemoveOption = (value: string) => {
-        setSelectedOptions(selectedOptions.filter((option) => option !== value));
-    };
+    console.log("Form sent");
+  };
 
-    return (
-        <form onSubmit={handleSubmit} className="container mx-auto px-4 py-6 md:py-12 md:grid md:grid-cols-3 md:gap-4">
-            <div className="mb-4 ">
-                <label htmlFor="name" className="block mb-2 font-bold text-gray-700 ">Name</label>
-                <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]" />
-            </div>
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOption, setSelectedOption] = useState<any | null>(null);
 
-            <div className="mb-4">
-                <label htmlFor="mealType" className="block mb-2 font-bold text-gray-700">Meal Type</label>
-                <select id="mealType" value={mealType} onChange={(e) => setMealType(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
-                    <option value="">Option Select</option>
-                    <option value="breakfast">Breakfast</option>
-                    <option value="lunch">Lunch</option>
-                    <option value="dinner">Dinner</option>
-                </select>
-            </div>
+  const handleAddOption = () => {
+    if (selectedOption && !selectedOptions.includes(selectedOption.name)) {
+      setSelectedOptions([...selectedOptions, selectedOption.name]);
+      setSelectedOption(null);
+    }
+  };
 
-            <div className="mb-4">
-                <label htmlFor="foodType" className="block mb-2 font-bold text-gray-700">Food Type</label>
-                <select id="foodType" value={foodType} onChange={(e) => setFoodType(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
-                    <option value="">Option Select</option>
-                    <option value="fruit-vegetables">Fruit and vegetables</option>
-                    <option value="protein">Protein</option>
-                    <option value="carbohydrates">Carbohydrates</option>
-                </select>
-            </div>
+  const handleRemoveOption = (value: string) => {
+    setSelectedOptions(selectedOptions.filter((option) => option !== value));
+  };
 
-            <div className="mb-4">
-                <label htmlFor="country" className="block mb-2 font-bold text-gray-700">Country</label>
-                <select id="country" value={country} onChange={(e) => setCountry(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
-                    <option value="">Option Select</option>
-                    <option value="spain">Spain</option>
-                    <option value="argentina">Argentina</option>
-                    <option value="peru">Peru</option>
-                </select>
-            </div>
+  const handleFileSelect = (event: any) => {
+    setImage(event.target.files[0]);
+  };
 
-            <div className="mb-4">
-                <label htmlFor="cookTime" className="block mb-2 font-bold text-gray-700">Cooking Time</label>
-                <select id="cookTime" value={cookTime} onChange={(e) => setCookTime(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
-                    <option value="">Option Select</option>
-                    <option value="fast">Fast Cooking</option>
-                    <option value="medium">Meidum Cooking</option>
-                    <option value="slow">Slow Cooker</option>
-                </select>
-            </div>
+  useEffect(() => {
+    ingredientService
+      .getData()
+      .then((data) => {
+        setIngredients(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-            <div className="mb-4">
-                <label htmlFor="difficulty" className="block mb-2 font-bold text-gray-700">Diffculty</label>
-                <select id="difficulty" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
-                    <option value="">Option Select</option>
-                    <option value="basic">Basic Level</option>
-                    <option value="medium">Meidum Level</option>
-                    <option value="high">High Level</option>
-                </select>
-            </div>
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="container mx-auto px-4 py-6 md:py-12 md:grid md:grid-cols-3 md:gap-4"
+    >
+      <div className="mb-4 ">
+        <label htmlFor="name" className="block mb-2 font-bold text-gray-700 ">
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]"
+        />
+      </div>
 
-            <div className="mb-4 ">
+      <div className="mb-4">
+        <label
+          htmlFor="mealType"
+          className="block mb-2 font-bold text-gray-700"
+        >
+          Meal Type
+        </label>
+        <select
+          id="mealType"
+          value={mealType}
+          onChange={(e) => setMealType(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]"
+        >
+          <option value="">Option Select</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+      </div>
 
-                <label htmlFor="typeingredients" className="block mb-2 font-bold text-gray-700">Ingredients</label>
-                <div className="relative">
-                    <select id="select" name="select" value={selectedOption?.value || ""} onChange={(e) =>
-                        setSelectedOption(options.find((option) => option.value === e.target.value) || null
-                        )
-                    }
-                        className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]">
+      <div className="mb-4 ">
+        <label
+          htmlFor="cookTime"
+          className="block mb-2 font-bold text-gray-700 "
+        >
+          Cooking Time (mins)
+        </label>
+        <input
+          type="text"
+          id="cookTime"
+          value={cookTime}
+          onChange={(e) => setCookTime(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]"
+        />
+      </div>
 
-                        <option value="">Selecciona una opción</option>
-                        {options.map((option) => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
-                    </select>
-                    {selectedOption && (
-                        <button type="button" onClick={handleAddOption} className="absolute inset-y-0 right-10 flex items-center px-2 text-gray-700"> Add </button>
-                    )}
+      <div className="mb-4">
+        <label
+          htmlFor="difficulty"
+          className="block mb-2 font-bold text-gray-700"
+        >
+          Diffculty
+        </label>
+        <select
+          id="difficulty"
+          value={difficulty}
+          onChange={(e) => setDifficulty(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]"
+        >
+          <option value="easy">Easy</option>
+          <option value="basic">Basic</option>
+          <option value="medium">Meidum</option>
+          <option value="expert">Expert</option>
+        </select>
+      </div>
 
-                </div>
-                {selectedOptions.length > 0 && (
-                    <div className="px-8 pt-6 pb-8 mb-4 w-full lg:w-1/2 mx-auto">
-                        <label className="font-medium">Opciones seleccionadas:</label>
-                        {selectedOptions.map((value) => (
-                            <div key={value} className="flex items-center gap-2 p-2 bg-gray-100 rounded-md">
-                                <span>{options.find((option) => option.value === value)?.label}</span>
-                                <button
-                                    type="button"
-                                    onClick={() => handleRemoveOption(value)}
-                                    className="flex items-center justify-center w-6 h-6 text-gray-700 rounded-full hover:bg-gray-200"
-                                >
-                                    X
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
+      <div className="mb-4 ">
+        <label
+          htmlFor="typeingredients"
+          className="block mb-2 font-bold text-gray-700"
+        >
+          Ingredients
+        </label>
+        <div className="relative">
+          <select
+            id="select"
+            name="select"
+            value={selectedOption?.name || ""}
+            onChange={(e) =>
+              setSelectedOption(
+                ingredients.find(
+                  (ingredient) => ingredient.name === e.target.value
+                ) || null
+              )
+            }
+            className="w-full px-3 py-2 border border-gray-400 rounded-lg shadow-md bg-[#f1f1f1]"
+          >
+            <option value="">Select ingredient</option>
+            {ingredients.map((ingredient) => (
+              <option key={ingredient._id} value={ingredient.name}>
+                {ingredient.name}
+              </option>
+            ))}
+          </select>
+          {selectedOption && (
+            <button
+              type="button"
+              onClick={handleAddOption}
+              className="absolute inset-y-0 right-10 flex items-center px-2 text-gray-700"
+            >
+              {" "}
+              Add{" "}
+            </button>
+          )}
+        </div>
+        {selectedOptions.length > 0 && (
+          <div className="px-8 pt-6 pb-8 mb-4 w-full lg:w-1/2 mx-auto">
+            <label className="font-medium">Selected ingredients:</label>
+            {selectedOptions.map((ingre) => (
+              <div
+                key={ingre}
+                className="flex items-center gap-2 p-2 bg-gray-100 rounded-md"
+              >
+                <span>
+                  {
+                    ingredients.find((ingredient) => ingredient.name === ingre)
+                      ?.name
+                  }
+                </span>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveOption(ingre)}
+                  className="flex items-center justify-center w-6 h-6 text-gray-700 rounded-full hover:bg-gray-200"
+                >
+                  X
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
-            <div className="mb-4">
-                <label htmlFor="description" className="block mb-2 font-bold text-gray-700">Description</label>
-                <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg bg-[#f1f1f1]"></textarea>
-            </div>
+      <div className="mb-4">
+        <label
+          htmlFor="description"
+          className="block mb-2 font-bold text-gray-700"
+        >
+          Description
+        </label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-400 rounded-lg bg-[#f1f1f1]"
+        ></textarea>
+      </div>
 
+      <div className="mb-4">
+        <label
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          htmlFor="file_input"
+        >
+          Upload file
+        </label>
+        <input
+          onChange={handleFileSelect}
+          className="block w-full text-sm text-gray-dark border border-gray-light rounded-lg cursor-pointer bg-gray-light dark:text-gray-dark focus:outline-none dark:bg-gray-light dark:border-gray-dark dark:placeholder-gray-dark"
+          id="file_input"
+          type="file"
+        />
+      </div>
 
-            <div className="mb-4">
-                <label htmlFor="image" className="block mb-2 font-bold text-gray-700">Image</label>
-                <textarea id="image" value={image} onChange={(e) => setImage(e.target.value)} className="w-full px-3 py-2 border border-gray-400 rounded-lg bg-[#f1f1f1]"></textarea>
-            </div>
+      <div className="flex justify-center">
+        <button type="submit" className="px-12 py-4 bg-[#EF3125] text-white">
+          Send
+        </button>
+      </div>
+    </form>
+  );
+};
 
-
-            <div className='flex justify-center' >
-                <button type="submit" className="px-12 py-4 bg-[#EF3125] text-white">Send</button>
-            </div>
-        </form>
-
-    );
-}
-
-export default Post
+export default Post;
