@@ -1,17 +1,17 @@
 import React from "react";
 import SocialNetwork from "../components/SocialNetwork/SocialNetwork";
-import Sherezada from "../assets/sherezada.svg";
-import man1 from "../assets/man1.svg";
-import man2 from "../assets/man2.svg";
-import man3 from "../assets/man3.svg";
-import man4 from "../assets/man4.svg";
-import Chicken from "../assets/chicken.svg";
-import VegPie from "../assets/vegetable-pie.svg";
+import Sherezada from "../assets/sherezada.png";
+import man1 from "../assets/man1.png";
+import man2 from "../assets/man1.png";
+import man3 from "../assets/man1.png";
+import man4 from "../assets/man1.png";
+import Chicken from "../assets/chicken-salad.png";
+import VegPie from "../assets/chicken-salad.png";
 import Donnut from "../assets/donut.png";
 import Sushi from "../assets/sushi.svg";
-import Burguer from "../assets/hamburguer.svg";
-import Salad from "../assets/chicken-salad.svg";
-import Salmon from "../assets/baked-salmon.svg";
+import Burguer from "../assets/chicken-salad.png";
+import Salad from "../assets/chicken-salad.png";
+import Salmon from "../assets/chicken-salad.png";
 import Heart from "../assets/icon-like.svg";
 import Comment from "../assets/icon-comments.svg";
 import Share from "../assets/icon-share.svg";
@@ -106,8 +106,8 @@ const SocialPage = (props: Props) => {
           </div>
 
           <div className="grid mx-8 grid-cols-2 md:grid-cols-4 gap-6 max-width:1280px">
-            <div className="flex flex-col">
-              <img className="h-20" src={Chicken} alt="" />
+            <div className="flex flex-col items-center">
+              <img className="w-{10}" src={Chicken} alt="" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -115,8 +115,8 @@ const SocialPage = (props: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <img className="h-20" src={VegPie} alt="" />
+            <div className="flex flex-col items-center">
+              <img className="w-{10}" src={VegPie} alt="" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -124,8 +124,8 @@ const SocialPage = (props: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <img className="h-20" src={Chicken} alt="" />
+            <div className="flex flex-col items-center">
+              <img className="w-{10}" src={Chicken} alt="" />
               <div className="flex flex-row  justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -133,8 +133,8 @@ const SocialPage = (props: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <img className="h-20" src={Burguer} alt="" />
+            <div className="flex flex-col items-center">
+              <img className="w-{10}" src={Burguer} alt="" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -142,8 +142,8 @@ const SocialPage = (props: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <img className="h-20" src={Burguer} alt="" />
+            <div className="flex flex-col items-center">
+              <img className="w-{10}" src={Burguer} alt="" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -151,8 +151,8 @@ const SocialPage = (props: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <img className="h-20" src={Salad} alt="" />
+            <div className="flex flex-col items-center">
+              <img className="w-{10}" src={Salad} alt="" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -160,8 +160,8 @@ const SocialPage = (props: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <img className="h-20" src={Salmon} alt="" />
+            <div className="flex flex-col items-center">
+              <img className="w-{10}" src={Salmon} alt="" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -169,8 +169,8 @@ const SocialPage = (props: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <img className="h-20" src={VegPie} alt="" />
+            <div className="flex flex-col items-center">
+              <img className="w-{10}" src={VegPie} alt="" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
