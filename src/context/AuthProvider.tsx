@@ -42,6 +42,7 @@ const AuthProvider: any = ({ children }: any): any => {
 
       try {
         const userData = await findUserById(authData.id);
+        delete userData.password;
         setAuth(userData);
       } catch (error) {
         console.log(error);
