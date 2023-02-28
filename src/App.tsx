@@ -13,6 +13,7 @@ import StatisticsPage from "./pages/Statistics";
 import { AuthProvider } from "./context/AuthProvider";
 import useAuth from "./hooks/useAuth";
 import Post from "./pages/Post";
+import RecipeDetail from "./pages/RecipeDetail";
 
 function App() {
   const { auth } = useAuth();
@@ -27,6 +28,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/recipes" element={<RecipeListPage />} />
+              <Route path="/recipes/recipe/:id" element={<RecipeDetail />} />
               <Route path="/statistics" element={<StatisticsPage />} />
               <Route path="/social" element={<SocialPage />} />
               <Route path="/login" element={<LoginPage />} />

@@ -7,7 +7,7 @@ export const Layout = (props: Props) => {
   return (
     <>
       <Navigation />
-      <main>
+      <main className="">
         <Outlet />
       </main>
     </>
