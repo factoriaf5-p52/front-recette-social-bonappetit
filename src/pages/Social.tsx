@@ -107,7 +107,7 @@ const SocialPage = (props: Props) => {
 
           <div className="grid mx-8 grid-cols-2 md:grid-cols-4 gap-6 max-width:1280px">
             <div className="flex flex-col items-center">
-              <img className="w-{10}" src={Chicken} alt="" />
+              <img className="w-{10}" src={Chicken} alt="A chicken salad" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -116,7 +116,7 @@ const SocialPage = (props: Props) => {
             </div>
 
             <div className="flex flex-col items-center">
-              <img className="w-{10}" src={VegPie} alt="" />
+              <img className="w-{10}" src={VegPie} alt="A vegetables pie" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -125,7 +125,7 @@ const SocialPage = (props: Props) => {
             </div>
 
             <div className="flex flex-col items-center">
-              <img className="w-{10}" src={Chicken} alt="" />
+              <img className="w-{10}" src={Chicken} alt="Roast chicken" />
               <div className="flex flex-row  justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -134,7 +134,7 @@ const SocialPage = (props: Props) => {
             </div>
 
             <div className="flex flex-col items-center">
-              <img className="w-{10}" src={Burguer} alt="" />
+              <img className="w-{10}" src={Burguer} alt="A hamburguer" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -143,7 +143,7 @@ const SocialPage = (props: Props) => {
             </div>
 
             <div className="flex flex-col items-center">
-              <img className="w-{10}" src={Burguer} alt="" />
+              <img className="w-{10}" src={Burguer} alt="A hamburguer" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -152,7 +152,7 @@ const SocialPage = (props: Props) => {
             </div>
 
             <div className="flex flex-col items-center">
-              <img className="w-{10}" src={Salad} alt="" />
+              <img className="w-{10}" src={Salad} alt="A green salad" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -161,7 +161,7 @@ const SocialPage = (props: Props) => {
             </div>
 
             <div className="flex flex-col items-center">
-              <img className="w-{10}" src={Salmon} alt="" />
+              <img className="w-{10}" src={Salmon} alt="Baked salmon" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
@@ -170,7 +170,7 @@ const SocialPage = (props: Props) => {
             </div>
 
             <div className="flex flex-col items-center">
-              <img className="w-{10}" src={VegPie} alt="" />
+              <img className="w-{10}" src={VegPie} alt="A vegetables pie" />
               <div className="flex flex-row justify-center items-center mt-3">
                 <img className="" src={Heart} alt="" />
                 <img className="" src={Comment} alt="" />
