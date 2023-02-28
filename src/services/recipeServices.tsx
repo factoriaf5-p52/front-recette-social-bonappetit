@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const URL_API =
   "https://backend-bonappetit.up.railway.app/api/v1/recipes/title/";
 
@@ -11,3 +12,16 @@ export const findAllRecipes = async (value: any) => {
     return error;
   }
 };
+
+// const Recettes = () => {
+
+//   const recipes = [
+//     {title: "Lemon Pie"},
+//     {title: "Pizza Margarita"}
+//   ]
+
+//   const [recette, setRecette] = React.useState
+// }
+
+
+
