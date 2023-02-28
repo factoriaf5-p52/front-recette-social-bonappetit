@@ -8,13 +8,16 @@ const config = {
   },
 };
 
-async function getData(img: any) {
+async function sendImage(img: File) {
+  const formData = new FormData();
+  formData.append("file", img);
+
   try {
-    const response = await axios.post(URL_API, img, config);
+    const response = await axios.post(URL_API, formData, config);
     return response.data;
   } catch (error) {
     console.log(error);
   }
 }
 
-export default { getData };
+export default { sendImage };

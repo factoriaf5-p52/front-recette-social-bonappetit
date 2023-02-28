@@ -15,7 +15,6 @@ const config = {
 export const postRecipe = async (newRecipe: IRecipe) => {
   try {
     const result = await axios.post(URL_API, newRecipe, config);
-    console.log("desde el service>" + result.data);
     return result;
   } catch (error) {
     return error;

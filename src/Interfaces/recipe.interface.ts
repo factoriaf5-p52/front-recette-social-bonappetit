@@ -8,9 +8,9 @@ export interface IRecipe {
     }>;
     time: number;
     is_private: boolean;
-    tags:string[];
+    difficulty:string;
     mealType: string;
-    image: string;
+    image?: string;
 
 }
 
