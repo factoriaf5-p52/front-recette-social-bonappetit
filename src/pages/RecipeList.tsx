@@ -55,7 +55,7 @@ const RecipeListPage = (props: Props) => {
 
       <h2 className="font-medium text-center mt-6 font-bold text-xl">Results</h2>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-6 mt-8 center-center gap-20">
+      <div className="grid max-width:1024px sm:grid-cols-2 md:grid-cols-6 mt-8 center-center gap-20">
         <div className="flex flex-col items-center">
           <img src={salmon} alt="pasta" className="w-{10}" />
           <h3 className="font-medium">Pasta</h3>

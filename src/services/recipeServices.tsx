@@ -13,5 +13,15 @@ export const findAllRecipes = async (value: any) => {
   }
 };
 
+// const Recettes = () => {
+
+//   const recipes = [
+//     {title: "Lemon Pie"},
+//     {title: "Pizza Margarita"}
+//   ]
+
+//   const [recette, setRecette] = React.useState
+// }
+
 
 
