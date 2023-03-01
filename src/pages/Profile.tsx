@@ -2,10 +2,13 @@ import React from "react";
 import Sherezada from "../assets/sherezada.svg";
 import BoxProfile from "../components/BoxProfile/BoxProfile";
 import Footer from "../components/Footer/Footer";
+import useAuth from "../hooks/useAuth";
 
 type Props = {};
 
 const ProfilePage = (props: Props) => {
+  const { auth, setAuth } = useAuth();
+
   return (
     <>
       <h1 className="flex justify-center mt-6 mb-3 font-bold text-2xl max-width:1280px sm:flex-wrap">
@@ -14,7 +17,9 @@ const ProfilePage = (props: Props) => {
 
       <div className="flex flex-col justify-center">
         <img className="h-32 mb-3" src={Sherezada} alt="user" />
-        <p className=" flex justify-center mb-1 font-bold text-lg">Sherezada</p>
+        <p className=" flex justify-center mb-1 font-bold text-lg">
+          {auth?.username}
+        </p>
         <p className="flex justify-center font-bold mb-8">Log out</p>
       </div>
 
