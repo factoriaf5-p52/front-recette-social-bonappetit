@@ -1,10 +1,36 @@
-# FRONT RECETTE SOCIAL
+# FRONT RECETTE SOCIAL - BON APPÉTIT TEAM
 
-## Contexto del proyecto
+## Context of our project
+In this project we had to create a single page application to connect with the API developed in a previous team work. It has been done following our clients' graphics design to give the best user's experience on both, mobile and desktop.
 
-Nuestra app se está cocinando a fuego lento pero tiene una pinta increíble. Ya tenemos el backend y queremos avanzar con el front-end. Hemos oído hablar de las aplicaciones single-page (SPA) y eso es lo que queremos. **Una aplicación SPA que se conecte a la API**, que ya habéis desarrollado, y que nos proporcione la mejor experiencia de usuario. La aplicación es para móvil, por tanto nuestra prioridad es que se visualice correctamente en todos los dispositivos móviles. Si también fuera progresiva (**PWA**) sería la guinda sobre el pastel.
+This is Bon Appétit, the best social web app for those who enjoy cooking and eating. 
 
-## Páginas de la aplicación a entregar
+## Tools 
+- Trello
+- Figma
+- Github
+- Railway
+- Postman
+- MongoDB Compass
+- Canva
+- Gitbook
+
+## Technologies
+- React Vite
+- React Router Dom
+- Tailwind
+- MongoDB
+- Javascript
+- Typescript
+- Axios
+- NestJS
+
+## It has the following pages
+1. **HOMEPAGE** It has a video and a "Bon appétit" 
+
+
+
+
 
 1. **HOMEPAGE** con vídeo de presentación (qué tal un vídeo corto de un huevo friéndose) y un botón de “Bon appetit” que nos lleve a la SOCIAL-PAGE.
 2. **SOCIAL PAGE**. Queremos ver todas las noticias que van sucediendo en nuestra app. Algo así como un twitter bien condimentado.
