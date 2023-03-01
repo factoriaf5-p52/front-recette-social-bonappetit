@@ -71,7 +71,7 @@ const RecipeListPage = (props: Props) => {
             </button>
           </form>
 
-          <h2 className="font-medium text-center mt-6 font-bold text-xl">
+          <h2 className="font-medium text-center mt-6 text-xl">
             Results
           </h2>
 

@@ -3,6 +3,7 @@ import { useParams, Params } from "react-router-dom";
 import recipeDetailService from "../services/recipeDetailService";
 import ingredientService from "../services/ingredientsService";
 import iconLike from "../assets/iconlike.png";
+import iconoLike from '../assets/iconoLike.png'
 import iconViews from "../assets/views.png";
 import Comment from "../assets/icon-comments.svg";
 import man1 from "../assets/man1.png"
@@ -12,10 +13,19 @@ type Props = {};
 
 const RecipeDetailPage = () => {
   const { id } = useParams<Params>();
-
   const [recipeDetail, setRecipeDetail] = useState<any>({});
-
   const [ingredients, setIngredients] = useState<any[]>([]);
+
+  const [totalLikes, setTotalLikes] = useState<number>(
+    () => parseInt(localStorage.getItem(`${id}-likes`) || "0"));
+
+  const [liked, setLiked] = useState<boolean>(
+    () => Boolean(localStorage.getItem(`${id}-liked`))
+  );
+
+  const [views, setViews] = React.useState(
+    () => parseInt(localStorage.getItem(`${id}-likes`) || "0"));
+  
 
   useEffect(() => {
     recipeDetailService
@@ -39,6 +49,29 @@ const RecipeDetailPage = () => {
       });
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem(`${id}-likes`, String(totalLikes));
+  }, [totalLikes, id]);
+
+
+  useEffect(() => {
+    if (liked) {
+      localStorage.setItem(`${id}-liked`, "true");
+    } else {
+      localStorage.removeItem(`${id}-liked`);
+    }
+  }, [liked, id]);
+
+  const handleLikeRecipe = () => {
+    const likedRecipe = localStorage.getItem(`liked-${id}`);
+    if (!likedRecipe) {
+      setTotalLikes(prevTotal => prevTotal + 1);
+      localStorage.setItem(`liked-${id}`, 'true');
+      setLiked(true);
+    }
+  };
+
+
   return (
     <section className="max-width:1280px flex justify-center items-center">
       <div className="flex flex-col justify-center h-full">
@@ -60,17 +93,11 @@ const RecipeDetailPage = () => {
               ))}
           </ul>
         </div>
-        
-        <div className="flex justify-row justify-center gap-3 mt-6 mr-3 ml-3">
-          <div className="flex flex-col">
-          <img src={iconViews} alt="views" />
-          <p>123</p>
-          </div>
-
-          <div className="flex flex-col">
-          <img src={iconLike} alt="heart" />
-          <p>123</p>
-          </div>
+        <div>
+          <img className="h-7" src={liked ? iconLike : iconoLike} alt="views" onClick={handleLikeRecipe} />
+          <p>{totalLikes}</p>
+          <img src={iconViews} alt="heart" onLoad={()=> {setViews(views + 1)}} />
+          <p>{views}</p>
 
           <div>Type: {recipeDetail.mealType} </div>
           <div>Difficulty: {recipeDetail.difficulty} </div>
