@@ -259,7 +259,7 @@ const Post = (props: Props) => {
                 <button
                   type="button"
                   onClick={() => handleRemoveOption(ingre.ingredient)}
-                  className="flex items-center justify-center w-6 h-6 text-gray-700 rounded-full hover:bg-red"
+                  className="flex items-center justify-center w-6 h-6 text-gray-700 rounded-full hover:bg-green"
                 >
                   X
                 </button>
@@ -300,7 +300,10 @@ const Post = (props: Props) => {
       </div>
 
       <div className="flex justify-center">
-        <button type="submit" className="px-12 py-4 bg-[#EF3125] text-white">
+        <button
+          type="submit"
+          className="px-12 py-4 bg-red hover:bg-green rounded-md text-white"
+        >
           Send
         </button>
       </div>
