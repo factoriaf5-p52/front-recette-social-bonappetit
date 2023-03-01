@@ -9,10 +9,10 @@ type Props = {};
 
 const RecipeDetailPage = () => {
   const { id } = useParams<Params>();
-
   const [recipeDetail, setRecipeDetail] = useState<any>({});
-
   const [ingredients, setIngredients] = useState<any[]>([]);
+  const [totalLikes, setTotalLikes] = useState<number>(
+    () => parseInt(localStorage.getItem(`${id}-visits`) || "0"));
 
   useEffect(() => {
     recipeDetailService
@@ -36,6 +36,16 @@ const RecipeDetailPage = () => {
       });
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem(`${id}-visits`, String(totalLikes));
+  }, [totalLikes, id]);
+ 
+  const handleLikeRecipe = () => {
+    setTotalLikes(prevTotal => prevTotal + 1);
+  };
+
+ 
+
   return (
     <section className="w-full flex justify-center items-center">
       <div className="max-w-screen-lg bg-green">
@@ -55,9 +65,9 @@ const RecipeDetailPage = () => {
           </ul>
         </div>
         <div>
-          <img src={iconViews} alt="views" />
-          <p>123</p>
-          <img src={iconLike} alt="heart" />
+          <img src={iconLike} alt="views" onClick={handleLikeRecipe} />
+          <p>{totalLikes}</p>
+          <img src={iconViews} alt="heart" />
           <p>123</p>
           <div>Type: {recipeDetail.mealType} </div>
           <div>Difficulty: {recipeDetail.difficulty} </div>
