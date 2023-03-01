@@ -16,7 +16,7 @@ type Props = {};
 const StatisticsPage = (props: Props) => {
   return (
     <>
-      <div className=" flex flex-col justify-center items-center">
+      <div className=" flex flex-col justify-center items-center mb-28">
         <SectionTitle text="Statistics" />
         <div className="mt-16">
           <p className="font-bold text-left">Best rated recipes</p>

@@ -23,7 +23,7 @@ type Props = {};
 const SocialPage = (props: Props) => {
   return (
     <>
-      <div>
+      <div className="mb-36">
         <div className="flex flex-col justify-center items-center mb-2">
           <SectionTitle text="Social Page" />
           <div className="flex flex-row mt-12 content-center gap-5 max-width:1280">

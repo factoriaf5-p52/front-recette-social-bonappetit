@@ -73,7 +73,7 @@ const RecipeDetailPage = () => {
   };
 
   return (
-    <section className=" flex justify-center items-center">
+    <section className=" flex justify-center items-center mb-36">
       <div className="flex flex-col justify-center h-full max-w-2xl">
         <SectionTitle text="Detail Recette" />
         <h2 className="flex mt-3 mb-3 justify-center font-bold text-xl">

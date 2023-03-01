@@ -65,7 +65,7 @@ const RecipeListPage = (props: Props) => {
 
   return (
     <>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mb-36">
         <SectionTitle text="Recipes List" />
         <section className="max-w-screen-lg flex flex-col justify-center items-center">
           <form className="w-full flex flex-col md:flex-row  items-center justify-center px-20 py-5 gap-4">

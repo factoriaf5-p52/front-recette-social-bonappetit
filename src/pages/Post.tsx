@@ -7,6 +7,7 @@ import { IRecipe } from "../Interfaces/recipe.interface";
 import useAuth from "../hooks/useAuth";
 import SectionTitle from "../components/SectionTitle/SectionTitle";
 import Footer from "../components/Footer/Footer";
+import FormAlert from "../components/FormAlert/FormAlert";
 
 type Props = {};
 
@@ -120,7 +121,7 @@ const Post = (props: Props) => {
       <SectionTitle text="New Recipe" />
       <form
         onSubmit={handleSubmit}
-        className="container mx-auto px-4 py-6 md:py-12 md:grid md:grid-cols-3 md:gap-4"
+        className="container mx-auto px-4 py-6 md:py-12 md:grid md:grid-cols-3 md:gap-4 mb-36"
       >
         <div className="mb-4 ">
           <label htmlFor="name" className="block mb-2 font-bold text-gray-700 ">
@@ -312,6 +313,7 @@ const Post = (props: Props) => {
           </button>
         </div>
       </form>
+
       <Footer />
     </>
   );

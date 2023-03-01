@@ -97,7 +97,7 @@ const RegisterPage = (props: Props) => {
 
   return (
     <>
-      <section className="flex flex-col justify-center items-center ">
+      <section className="flex flex-col justify-center items-center mb-36 ">
         <div className="bg-red md:bg-white px-10 py-8 flex  w-full">
           {isMobile ? <BackButton /> : ""}
           <h1 className="flex-1 w-64 text-white md:text-gray-dark font-bold text-2xl md:text-3xl text-center mb-4">

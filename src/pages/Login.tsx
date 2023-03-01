@@ -70,7 +70,7 @@ const LoginPage = (props: Props) => {
 
   return (
     <>
-      <section className="flex flex-col justify-center items-center">
+      <section className="flex flex-col justify-center items-center mb-36">
         <SectionTitle text="Login" />
         <div className="mx-14 flex justify-center max-w-7xl">
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-10 md:mt-0 w-80">
