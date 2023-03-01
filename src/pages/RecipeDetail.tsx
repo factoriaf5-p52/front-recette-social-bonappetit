@@ -20,6 +20,10 @@ const RecipeDetailPage = () => {
     () => Boolean(localStorage.getItem(`${id}-liked`))
   );
 
+  const [views, setViews] = React.useState(
+    () => parseInt(localStorage.getItem(`${id}-likes`) || "0"));
+  
+
   useEffect(() => {
     recipeDetailService
       .findOneRecipe(id)
@@ -86,8 +90,8 @@ const RecipeDetailPage = () => {
         <div>
           <img className="h-7" src={liked ? iconLike : iconoLike} alt="views" onClick={handleLikeRecipe} />
           <p>{totalLikes}</p>
-          <img src={iconViews} alt="heart" />
-          <p>123</p>
+          <img src={iconViews} alt="heart" onLoad={()=> {setViews(views + 1)}} />
+          <p>{views}</p>
           <div>Type: {recipeDetail.mealType} </div>
           <div>Difficulty: {recipeDetail.difficulty} </div>
           <div>Time: {recipeDetail.time}</div>
