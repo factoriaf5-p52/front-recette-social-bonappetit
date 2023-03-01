@@ -3,6 +3,7 @@ import { useParams, Params } from "react-router-dom";
 import recipeDetailService from "../services/recipeDetailService";
 import ingredientService from "../services/ingredientsService";
 import iconLike from "../assets/iconlike.png";
+import iconoLike from '../assets/iconoLike.png'
 import iconViews from "../assets/views.png";
 
 type Props = {};
@@ -11,8 +12,16 @@ const RecipeDetailPage = () => {
   const { id } = useParams<Params>();
   const [recipeDetail, setRecipeDetail] = useState<any>({});
   const [ingredients, setIngredients] = useState<any[]>([]);
+
   const [totalLikes, setTotalLikes] = useState<number>(
-    () => parseInt(localStorage.getItem(`${id}-visits`) || "0"));
+    () => parseInt(localStorage.getItem(`${id}-likes`) || "0"));
+
+    // const [hasLiked, setHasLiked] = useState<boolean>(false);
+   //este= const [isLiked, setIsLiked] = useState<boolean>(false);
+
+   const [liked, setLiked] = useState<boolean>(
+    () => Boolean(localStorage.getItem(`${id}-liked`))
+  );
 
   useEffect(() => {
     recipeDetailService
@@ -37,14 +46,27 @@ const RecipeDetailPage = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(`${id}-visits`, String(totalLikes));
+    localStorage.setItem(`${id}-likes`, String(totalLikes));
   }, [totalLikes, id]);
- 
+
+
+  useEffect(() => {
+    if (liked) {
+      localStorage.setItem(`${id}-liked`, "true");
+    } else {
+      localStorage.removeItem(`${id}-liked`);
+    }
+  }, [liked, id]);
+
   const handleLikeRecipe = () => {
-    setTotalLikes(prevTotal => prevTotal + 1);
+    const likedRecipe = localStorage.getItem(`liked-${id}`);
+    if (!likedRecipe) {
+      setTotalLikes(prevTotal => prevTotal + 1);
+      localStorage.setItem(`liked-${id}`, 'true');
+      setLiked(true);
+    }
   };
 
- 
 
   return (
     <section className="w-full flex justify-center items-center">
@@ -65,7 +87,7 @@ const RecipeDetailPage = () => {
           </ul>
         </div>
         <div>
-          <img src={iconLike} alt="views" onClick={handleLikeRecipe} />
+          <img className="h-7" src={liked ? iconLike : iconoLike} alt="views" onClick={handleLikeRecipe} />
           <p>{totalLikes}</p>
           <img src={iconViews} alt="heart" />
           <p>123</p>
