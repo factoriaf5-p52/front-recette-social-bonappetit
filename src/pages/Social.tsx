@@ -109,72 +109,72 @@ const SocialPage = (props: Props) => {
             <div className="flex flex-col items-center">
               <img className="w-{10}" src={Chicken} alt="A chicken salad" />
               <div className="flex flex-row justify-center items-center mt-3">
-                <img className="" src={Heart} alt="" />
-                <img className="" src={Comment} alt="" />
-                <img className="" src={Share} alt="" />
+                <img  src={Heart} alt="Heart" />
+                <img  src={Comment} alt="Comment cloud" />
+                <img  src={Share} alt="Icon to share" />
               </div>
             </div>
 
             <div className="flex flex-col items-center">
               <img className="w-{10}" src={VegPie} alt="A vegetables pie" />
               <div className="flex flex-row justify-center items-center mt-3">
-                <img className="" src={Heart} alt="" />
-                <img className="" src={Comment} alt="" />
-                <img className="" src={Share} alt="" />
+                <img  src={Heart} alt="Heart" />
+                <img  src={Comment} alt="Comment cloud" />
+                <img  src={Share} alt="Icon to share" />
               </div>
             </div>
 
             <div className="flex flex-col items-center">
               <img className="w-{10}" src={Chicken} alt="Roast chicken" />
               <div className="flex flex-row  justify-center items-center mt-3">
-                <img className="" src={Heart} alt="" />
-                <img className="" src={Comment} alt="" />
-                <img className="" src={Share} alt="" />
+                <img  src={Heart} alt="Heart" />
+                <img  src={Comment} alt="Comment cloud" />
+                <img  src={Share} alt="Icon to share" />
               </div>
             </div>
 
             <div className="flex flex-col items-center">
               <img className="w-{10}" src={Burguer} alt="A hamburguer" />
               <div className="flex flex-row justify-center items-center mt-3">
-                <img className="" src={Heart} alt="" />
-                <img className="" src={Comment} alt="" />
-                <img className="" src={Share} alt="" />
+                <img  src={Heart} alt="Heart" />
+                <img  src={Comment} alt="Comment cloud" />
+                <img  src={Share} alt="Icon to share" />
               </div>
             </div>
 
             <div className="flex flex-col items-center">
               <img className="w-{10}" src={Burguer} alt="A hamburguer" />
               <div className="flex flex-row justify-center items-center mt-3">
-                <img className="" src={Heart} alt="" />
-                <img className="" src={Comment} alt="" />
-                <img className="" src={Share} alt="" />
+                <img  src={Heart} alt="Heart" />
+                <img  src={Comment} alt="Comment cloud" />
+                <img  src={Share} alt="Icon to share" />
               </div>
             </div>
 
             <div className="flex flex-col items-center">
               <img className="w-{10}" src={Salad} alt="A green salad" />
               <div className="flex flex-row justify-center items-center mt-3">
-                <img className="" src={Heart} alt="" />
-                <img className="" src={Comment} alt="" />
-                <img className="" src={Share} alt="" />
+                <img  src={Heart} alt="Heart" />
+                <img  src={Comment} alt="Comment cloud" />
+                <img  src={Share} alt="Icon to share" />
               </div>
             </div>
 
             <div className="flex flex-col items-center">
               <img className="w-{10}" src={Salmon} alt="Baked salmon" />
               <div className="flex flex-row justify-center items-center mt-3">
-                <img className="" src={Heart} alt="" />
-                <img className="" src={Comment} alt="" />
-                <img className="" src={Share} alt="" />
+                <img  src={Heart} alt="Heart" />
+                <img  src={Comment} alt="Comment cloud" />
+                <img  src={Share} alt="Icon to share" />
               </div>
             </div>
 
             <div className="flex flex-col items-center">
               <img className="w-{10}" src={VegPie} alt="A vegetables pie" />
               <div className="flex flex-row justify-center items-center mt-3">
-                <img className="" src={Heart} alt="" />
-                <img className="" src={Comment} alt="" />
-                <img className="" src={Share} alt="" />
+                <img  src={Heart} alt="Heart" />
+                <img  src={Comment} alt="Comment cloud" />
+                <img  src={Share} alt="Icon to share" />
               </div>
             </div>
           </div>
