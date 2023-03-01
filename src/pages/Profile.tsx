@@ -18,7 +18,7 @@ const ProfilePage = (props: Props) => {
         <p className="flex justify-center font-bold mb-8">Log out</p>
       </div>
 
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 place-items-center gap-20  max-width:1280px ">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 place-items-center gap-20  max-width:1280px">
         <div className="w-80 h-48 rounded ">
           <div>
             <h2 className="font-bold mb-3">My recipes</h2>
