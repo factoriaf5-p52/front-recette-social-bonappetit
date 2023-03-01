@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Params } from "react-router-dom";
-import findOneRecipe from "../services/recipeDetailService";
-import getData from "../services/ingredientsService";
+import recipeDetailService from "../services/recipeDetailService";
+import ingredientService from "../services/ingredientsService";
 import iconLike from "../assets/iconlike.png";
 import iconoLike from "../assets/iconoLike.png";
 import iconViews from "../assets/views.png";
@@ -30,7 +30,8 @@ const RecipeDetailPage = () => {
   );
 
   useEffect(() => {
-    findOneRecipe(id)
+    recipeDetailService
+      .findOneRecipe(id)
       .then((data) => {
         setRecipeDetail(data);
       })
@@ -40,7 +41,8 @@ const RecipeDetailPage = () => {
   }, []);
 
   useEffect(() => {
-    getData()
+    ingredientService
+      .getData()
       .then((data) => {
         setIngredients(data);
       })

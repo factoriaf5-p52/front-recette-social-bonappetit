@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import postRecipe from "../services/newRecipeService";
-import sendImage from "../services/fileService";
-import getData from "../services/ingredientsService";
+import newRecipeService from "../services/newRecipeService";
+import fileService from "../services/fileService";
+import ingredientService from "../services/ingredientsService";
 import { IIngredient } from "../Interfaces/ingredient.interface";
 import { IRecipe } from "../Interfaces/recipe.interface";
 import useAuth from "../hooks/useAuth";
 import SectionTitle from "../components/SectionTitle/SectionTitle";
+import Footer from "../components/Footer/Footer";
 
 type Props = {};
 
@@ -34,7 +35,7 @@ const Post = (props: Props) => {
       "https://backend-bonappetit.up.railway.app/api/v1/files/upload/1677548230291-recipe-64ed.png"; //default image if not provided
     if (image) {
       try {
-        const imageUpUrl = await sendImage(image);
+        const imageUpUrl = await fileService.sendImage(image);
         console.log("image url: " + imageUpUrl.secureUrl);
         setImageUrl(imageUpUrl.secureUrl);
         imageUrlupdated = imageUpUrl.secureUrl;
@@ -61,7 +62,7 @@ const Post = (props: Props) => {
     };
 
     try {
-      const recipeEntered = await postRecipe(recipeDto);
+      const recipeEntered = await newRecipeService.postRecipe(recipeDto);
       console.log(recipeEntered);
     } catch (error) {}
 
@@ -104,7 +105,8 @@ const Post = (props: Props) => {
   };
 
   useEffect(() => {
-    getData()
+    ingredientService
+      .getData()
       .then((data) => {
         setIngredients(data);
       })
@@ -310,6 +312,7 @@ const Post = (props: Props) => {
           </button>
         </div>
       </form>
+      <Footer />
     </>
   );
 };

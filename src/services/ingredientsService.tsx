@@ -2,7 +2,7 @@ import axios from "axios";
 
 const URL_API = "https://backend-bonappetit.up.railway.app/api/v1/ingredients";
 
-async function getData() {
+export async function getData() {
   try {
     const response = await axios.get(URL_API);
     return response.data;
@@ -11,4 +11,4 @@ async function getData() {
   }
 }
 
-export default getData;
+export default { getData };

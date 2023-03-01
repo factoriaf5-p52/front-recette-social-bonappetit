@@ -3,6 +3,7 @@ import styles from "./Navigation.module.css";
 import iconHome from "../../assets/iconhome.svg";
 import iconSearch from "../../assets/iconsearch.svg";
 import iconStatistics from "../../assets/iconchart.svg";
+import iconAdd from "../../assets/plusIcon.png";
 import iconSocial from "../../assets/iconnotice.svg";
 import iconProfile from "../../assets/iconprofile.svg";
 import iconLogo from "../../assets/logo.svg";

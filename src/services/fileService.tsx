@@ -8,7 +8,7 @@ const config = {
   },
 };
 
-async function sendImage(img: File) {
+export async function sendImage(img: File) {
   const formData = new FormData();
   formData.append("file", img);
 
@@ -20,4 +20,4 @@ async function sendImage(img: File) {
   }
 }
 
-export default sendImage;
+export default { sendImage };

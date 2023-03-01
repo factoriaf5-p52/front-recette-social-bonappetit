@@ -48,7 +48,8 @@ const RecipeListPage = (props: Props) => {
   }
 
   useEffect(() => {
-    recipeService()
+    recipeService
+      .findAllRecipes()
       .then((data) => {
         setList(data);
         setFilteredList(data);

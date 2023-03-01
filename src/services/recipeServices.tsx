@@ -2,7 +2,7 @@ import axios from "axios";
 
 const URL_API = "https://backend-bonappetit.up.railway.app/api/v1/recipes/";
 
-const findAllRecipes = async () => {
+export const findAllRecipes = async () => {
   try {
     const result = await axios.get(URL_API);
     console.log(result.data);
@@ -12,4 +12,4 @@ const findAllRecipes = async () => {
   }
 };
 
-export default findAllRecipes;
+export default { findAllRecipes };
