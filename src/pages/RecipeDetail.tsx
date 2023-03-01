@@ -16,10 +16,7 @@ const RecipeDetailPage = () => {
   const [totalLikes, setTotalLikes] = useState<number>(
     () => parseInt(localStorage.getItem(`${id}-likes`) || "0"));
 
-    // const [hasLiked, setHasLiked] = useState<boolean>(false);
-   //este= const [isLiked, setIsLiked] = useState<boolean>(false);
-
-   const [liked, setLiked] = useState<boolean>(
+  const [liked, setLiked] = useState<boolean>(
     () => Boolean(localStorage.getItem(`${id}-liked`))
   );
 
