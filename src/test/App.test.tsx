@@ -3,10 +3,6 @@ import App from "../App";
 import { useNavigate } from "react-router-dom";
 import Home from "../pages/Home";
 
-    expect(navigateMock).toHaveBeenCalledWith("/recipes");
-  });
-});
-
 jest.mock("react-router-dom");
 
 describe("HomePage component", () => {
