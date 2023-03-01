@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer";
 import { loginUser } from "../services/userServices";
 import useAuth from "../hooks/useAuth";
 import FormAlert from "../components/FormAlert/FormAlert";
+import SectionTitle from "../components/SectionTitle/SectionTitle";
 
 type Props = {};
 
@@ -70,12 +71,7 @@ const LoginPage = (props: Props) => {
   return (
     <>
       <section className="flex flex-col justify-center items-center">
-        <div className="bg-red md:bg-white px-10 py-8 flex  w-full">
-          {isMobile ? <BackButton /> : ""}
-          <h1 className="flex-1 w-64 text-white md:text-gray-dark font-bold text-2xl md:text-3xl text-center mb-4">
-            Login
-          </h1>
-        </div>
+        <SectionTitle text="Login" />
         <div className="mx-14 flex justify-center max-w-7xl">
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-10 md:mt-0 w-80">
             <div className="mb-4">

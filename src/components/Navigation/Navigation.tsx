@@ -18,7 +18,7 @@ const Navigation = () => {
     navigate("/");
   };
   const handleClickUser = () => {
-    navigate("/login");
+    auth?.username ? navigate("/profile") : navigate("/login");
   };
 
   return (

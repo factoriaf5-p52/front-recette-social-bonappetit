@@ -12,7 +12,7 @@ const config = {
   },
 };
 
-export const postRecipe = async (newRecipe: IRecipe) => {
+const postRecipe = async (newRecipe: IRecipe) => {
   try {
     const result = await axios.post(URL_API, newRecipe, config);
     return result;
@@ -21,4 +21,4 @@ export const postRecipe = async (newRecipe: IRecipe) => {
   }
 };
 
-export default { postRecipe };
+export default postRecipe;

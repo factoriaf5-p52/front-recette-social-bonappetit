@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import salmon from "../assets/salmon.png";
 import recipeService from "../services/recipeServices";
 import Footer from "../components/Footer/Footer";
 import { Link } from "react-router-dom";
+import SectionTitle from "../components/SectionTitle/SectionTitle";
 
 type Props = {};
 
@@ -48,8 +48,7 @@ const RecipeListPage = (props: Props) => {
   }
 
   useEffect(() => {
-    recipeService
-      .findAllRecipes()
+    recipeService()
       .then((data) => {
         setList(data);
         setFilteredList(data);
@@ -66,7 +65,7 @@ const RecipeListPage = (props: Props) => {
   return (
     <>
       <div className="flex flex-col items-center">
-        <h1 className="font-bold text-center p-4 text-2xl">Recipes List</h1>
+        <SectionTitle text="Recipes List" />
         <section className="max-w-screen-lg flex flex-col justify-center items-center">
           <form className="w-full flex flex-col md:flex-row  items-center justify-center px-20 py-5 gap-4">
             <input
@@ -108,9 +107,7 @@ const RecipeListPage = (props: Props) => {
             </select>
           </form>
 
-          <h2 className="font-medium text-center mt-6 text-xl">
-            Results
-          </h2>
+          <h2 className="font-medium text-center mt-6 text-xl">Results</h2>
 
           <div className="flex items-center justify-center flex-wrap gap-10 mx-6 my-12">
             {filteredList.map((recipe, i) => (

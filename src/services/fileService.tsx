@@ -20,4 +20,4 @@ async function sendImage(img: File) {
   }
 }
 
-export default { sendImage };
+export default sendImage;

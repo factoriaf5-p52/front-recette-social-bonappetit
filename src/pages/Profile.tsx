@@ -2,7 +2,9 @@ import React from "react";
 import Sherezada from "../assets/sherezada.svg";
 import BoxProfile from "../components/BoxProfile/BoxProfile";
 import Footer from "../components/Footer/Footer";
+import SectionTitle from "../components/SectionTitle/SectionTitle";
 import useAuth from "../hooks/useAuth";
+import userDefault from "../assets/userDefault.png";
 
 type Props = {};
 
@@ -11,16 +13,15 @@ const ProfilePage = (props: Props) => {
 
   return (
     <>
-      <h1 className="flex justify-center mt-6 mb-3 font-bold text-2xl max-width:1280px sm:flex-wrap">
-        Profile
-      </h1>
+      <SectionTitle text="Profile" />
 
-      <div className="flex flex-col justify-center">
-        <img className="h-32 mb-3" src={Sherezada} alt="user" />
+      <div className="flex flex-col justify-center items-center mt-8">
+        <img className="w-24 mb-3" src={userDefault} alt="user" />
         <p className=" flex justify-center mb-1 font-bold text-lg">
           {auth?.username}
         </p>
-        <p className="flex justify-center font-bold mb-8">Log out</p>
+        <p>{auth?.email}</p>
+        <p className="flex justify-center font-bold mb-8 mt-4">Log out</p>
       </div>
 
       <div className="grid sm:grid-cols-1 md:grid-cols-2 place-items-center gap-20  max-width:1280px">

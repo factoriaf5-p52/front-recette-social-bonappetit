@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Params } from "react-router-dom";
-import recipeDetailService from "../services/recipeDetailService";
-import ingredientService from "../services/ingredientsService";
+import findOneRecipe from "../services/recipeDetailService";
+import getData from "../services/ingredientsService";
 import iconLike from "../assets/iconlike.png";
 import iconoLike from "../assets/iconoLike.png";
 import iconViews from "../assets/views.png";
 import Comment from "../assets/icon-comments.svg";
 import man1 from "../assets/man1.png";
 import Footer from "../components/Footer/Footer";
+import SectionTitle from "../components/SectionTitle/SectionTitle";
 
 type Props = {};
 
@@ -29,8 +30,7 @@ const RecipeDetailPage = () => {
   );
 
   useEffect(() => {
-    recipeDetailService
-      .findOneRecipe(id)
+    findOneRecipe(id)
       .then((data) => {
         setRecipeDetail(data);
       })
@@ -40,8 +40,7 @@ const RecipeDetailPage = () => {
   }, []);
 
   useEffect(() => {
-    ingredientService
-      .getData()
+    getData()
       .then((data) => {
         setIngredients(data);
       })
@@ -74,9 +73,7 @@ const RecipeDetailPage = () => {
   return (
     <section className=" flex justify-center items-center">
       <div className="flex flex-col justify-center h-full max-w-2xl">
-        <h1 className="flex font-bold text-2xl justify-center mt-4">
-          Detail Recette
-        </h1>
+        <SectionTitle text="Detail Recette" />
         <h2 className="flex mt-3 mb-3 justify-center font-bold text-xl">
           {recipeDetail.title}
         </h2>

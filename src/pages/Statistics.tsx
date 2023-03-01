@@ -9,6 +9,7 @@ import burguer from "../assets/low-hamburguer.png";
 import salad from "../assets/low-salad.png";
 import salmon from "../assets/low-salmon.png";
 import Footer from "../components/Footer/Footer";
+import SectionTitle from "../components/SectionTitle/SectionTitle";
 
 type Props = {};
 
@@ -16,10 +17,8 @@ const StatisticsPage = (props: Props) => {
   return (
     <>
       <div className=" flex flex-col justify-center items-center">
-        <h1 className="font-bold text-center p-4 font-bold text-2xl mb-4">
-          Statistics
-        </h1>
-        <div>
+        <SectionTitle text="Statistics" />
+        <div className="mt-16">
           <p className="font-bold text-left">Best rated recipes</p>
           <div className="grid grid-cols-3 gap-4 p-3 mb-3">
             <img src={pasta} alt="pasta" />

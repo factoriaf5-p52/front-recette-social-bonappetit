@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import App from "../App";
 import { useNavigate } from "react-router-dom";
 import Home from "../pages/Home";
+import RecipeList from "../pages/RecipeList";
 
 jest.mock("react-router-dom");
 
@@ -15,5 +16,13 @@ describe("HomePage component", () => {
     button.click();
 
     expect(navigateMock).toHaveBeenCalledWith("/recipes");
+  });
+
+  describe("Debemos poder buscar recetas por nombre", () => {
+    test('La aplicación debe tener un campo input con el placeholder => "Recipe name..."', () => {
+      render(<RecipeList />);
+      const input = screen.getByPlaceholderText("Recipe name...");
+      expect(input).toBeInTheDocument();
+    });
   });
 });
