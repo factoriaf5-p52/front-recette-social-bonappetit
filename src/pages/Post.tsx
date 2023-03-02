@@ -17,6 +17,7 @@ type IngredientDto = {
 };
 
 const Post = (props: Props) => {
+  const [message, setMessage] = useState<any>("");
   const [name, setName] = useState<any>("");
   const [description, setDescription] = useState<any>("");
   const [mealType, setMealType] = useState<any>("breakfast");
@@ -33,7 +34,7 @@ const Post = (props: Props) => {
 
     //Send image and get url
     let imageUrlupdated =
-      "https://backend-bonappetit.up.railway.app/api/v1/files/upload/1677548230291-recipe-64ed.png"; //default image if not provided
+      "https://backend-bonappetit.up.railway.app/api/v1/files/upload/1677716410986-recipeImg-5f8c.png"; //default image if not provided
     if (image) {
       try {
         const imageUpUrl = await fileService.sendImage(image);
@@ -67,7 +68,7 @@ const Post = (props: Props) => {
       console.log(recipeEntered);
     } catch (error) {}
 
-    console.log("Form sent");
+    setMessage("Recipe successfully uploaded");
   };
 
   //Ingredients Select
@@ -312,8 +313,8 @@ const Post = (props: Props) => {
             Send
           </button>
         </div>
+        <p className="text-2xl text-green mt-6">{message}</p>
       </form>
-
       <Footer />
     </>
   );
