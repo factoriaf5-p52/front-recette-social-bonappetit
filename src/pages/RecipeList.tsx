@@ -113,7 +113,11 @@ const RecipeListPage = (props: Props) => {
           <div className="flex items-center justify-center flex-wrap gap-10 mx-6 my-12">
             {filteredList.map((recipe, i) => (
               <div key={i} className="flex flex-col w-32 items-center">
-                <img src={recipe.image} alt="pasta" className="w-{10}" />
+                <img
+                  src={recipe.image}
+                  alt="pasta"
+                  className="w-{10} rounded-lg"
+                />
                 <h3 className="font-bold mt-2 text-center">
                   <Link to={`/recipes/recipe/${recipe._id}`}>
                     {recipe.title}
