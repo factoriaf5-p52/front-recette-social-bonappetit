@@ -34,7 +34,7 @@ const Post = (props: Props) => {
 
     //Send image and get url
     let imageUrlupdated =
-      "https://backend-bonappetit.up.railway.app/api/v1/files/upload/1677716410986-recipeImg-5f8c.png"; //default image if not provided
+      "https://www.weightwatchers.com/images/3084/dynamic/foodandrecipes/2014/12/us_img_recipe_default_600x600.jpg"; //default image if not provided
     if (image) {
       try {
         const imageUpUrl = await fileService.sendImage(image);
