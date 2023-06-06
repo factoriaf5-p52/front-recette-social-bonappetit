@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const API_URL = "https://backend-bonappetit.up.railway.app/api/v1/users";
-const API_URL_LOGIN =
-  "https://backend-bonappetit.up.railway.app/api/v1/auth/login";
+const API_URL = "https://api-back-recette.onrender.com/api/v1/users";
+const API_URL_LOGIN = "https://api-back-recette.onrender.com/api/v1/auth/login";
 
 export const registerUser = async (data: any): Promise<any> => {
   try {
@@ -27,8 +26,5 @@ export const findUserById = async (id: string) => {
   try {
     const response = await axios.get(API_URL + "/" + id);
     return response.data;
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
-

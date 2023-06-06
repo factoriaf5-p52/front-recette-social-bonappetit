@@ -45,7 +45,7 @@ const AuthProvider: any = ({ children }: any): any => {
         delete userData.password;
         setAuth(userData);
       } catch (error) {
-        console.log(error);
+        console.log("No user found");
         setAuth(null);
       }
     };

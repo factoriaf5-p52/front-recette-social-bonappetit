@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IRecipe } from "../Interfaces/recipe.interface";
 
-const URL_API = "https://backend-bonappetit.up.railway.app/api/v1/recipes";
+const URL_API = "https://api-back-recette.onrender.com/api/v1/recipes";
 
 const token = localStorage.getItem("token");
 

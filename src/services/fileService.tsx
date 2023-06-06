@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL_API = "https://backend-bonappetit.up.railway.app/api/v1/files/upload";
+const URL_API = "https://api-back-recette.onrender.com/api/v1/files/upload";
 
 const config = {
   headers: {

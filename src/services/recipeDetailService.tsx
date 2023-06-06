@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const URL_API =
-  "https://backend-bonappetit.up.railway.app/api/v1/recipes/recipe/";
+const URL_API = "https://api-back-recette.onrender.com/api/v1/recipes/recipe/";
 
 export const findOneRecipe = async (id: string | undefined) => {
   try {
